@@ -1,31 +1,108 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <title>A Modern Development Environment for C/C++</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css">
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
+    <style>
+        :root {
+            --r-heading-text-transform: none;
+            --r-main-font-size: 32px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- Chapter 0: Introduction -->
+        <section>
+
+          <!-- Slide 0.1 -->
+          <section data-markdown><textarea data-template>
+			A Modern Development Environment For C/C++
+			==========================================
+
+			By David Zemon
+
+			February 16, 2022
+          </textarea></section>
+
+          <!-- Slide 0.2 -->
+          <section data-markdown><textarea data-template>
+            What is a "Development Environment"?
+            ====================================
+
+            All of the tools used by a developer on her local machine
+            during the development stage, including:
+
+            * Editor
+            * Build system
+            * Compiler & debugger
+            * Testing tools
+          </textarea></section>
+
+          <!-- Slide 0.3 -->
+          <section data-markdown=""><textarea data-template>
+            What Makes it "Modern"?
+            =======================
+
+            * Easy integration of tools & IDE
+              * Without tightly coupling the tools & IDE
+            * Declarative dependency management
+            * Unit testing framework & powerful mocking library
+            * Code coverage reports
+            * Static & dynamic code analysis
+            * Powerful and intuitive debugger
+
+            ACTIVELY MAINTAINED TOOLS
+
+            COMMUNITY SUPPORT
+          </textarea></section>
+
+          <!-- Slide 0.4 -->
+          <section data-markdown=""><textarea data-template>
+            How Do We Get There with C/C++?
+            ===============================
+
+            By combining two newcomers
+
+            1. **JetBrains CLion**
+            2. **JFrog Conan**
+
+            With a suite of well-established staples
+
+            CMake, GoogleTest, gcc/gdb/gcov,<br />
+            clang-tidy, Cppcheck, valgrind
+          </textarea></section>
+        </section>
+
+        <!-- Chapter 1: Conan -->
+        <section>
+          <!-- Slide 1.0 -->
+          <section data-markdown><textarea data-template>
+            JFrog Conan
+            ===========
+
+
+          </textarea></section>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
@@ -33,8 +110,8 @@
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
 			});
-		</script>
-	</body>
+    </script>
+  </body>
 </html>
