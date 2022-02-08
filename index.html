@@ -101,6 +101,79 @@
 
             The open source, decentralized and multi-platform package manager to create and share all your native binaries.
           </textarea></section>
+
+          <!-- Slide 1.1 -->
+          <section data-markdown><textarea data-template>
+            What was wrong with apt/yum/pacman?
+            ===================================
+
+            ![Old man yells at cloud](images/old_man_cloud.jpg)
+            <!-- .element style="width: 10em; float: right" -->
+
+            * Not cross-platform
+            * Limited to one version of a given<br /> package at a time
+            * Standard usage requires root access
+            * Limited "developer" features, such as<br /> installing dev-only dependencies
+          </textarea></section>
+
+          <!-- Slide 1.2 -->
+          <section data-markdown=""><textarea data-template>
+            How does Conan work?
+            ====================
+
+            * "Recipes" describe dependencies, build/packaging instructions, and metadata such as library names and
+              include directories
+            * "Profiles" describe an environment, such as the classic build/host/target triplet, environment variables,
+              compiler version, etc
+            * Compiled packages (including source) are uploaded to binary repositories such as
+              [Conan Center](https://conan.io/center/), a company's private JFrog Artifactory instance, or an instance
+              of `conan_server` shipped with every Conan installation
+            * Dependencies are cached in `~/.conan/data` in a folder structure that allows unique instances
+              for every permutation of a project
+            * Appropriate header include and library search paths for necessary dependencies are provided to a package's
+              existing build system - Conan DOES NOT REPLACE YOUR BUILD SYSTEM
+          </textarea></section>
+
+          <!-- Slide 1.3 -->
+          <section data-markdown=""><textarea data-template>
+            Just show an example!
+            =====================
+
+            ```py
+            class SpaghettiRecipe(ConanFile):
+              name           = 'spaghetti'
+              version         = '1.0.0-1'
+              settings        = 'os', 'compiler', 'build_type', 'arch'
+              options         = { 'shared': [True, False], 'fPIC': [True, False] }
+              default_options = { 'shared': False, 'fPIC': True }
+              generators      = 'cmake_find_package'
+
+              build_requires  = 'stockpot/[^3.2.1]', 'gtest/cci.20211026'
+              requires        = 'plates/[~4.5.6]'
+
+              scm = { 'type': 'git', 'url': 'auto', 'revision': 'auto' }
+
+              def build(self):
+                cmake = CMake(self); cmake.configure(); cmake.build(); cmake.test()
+
+              def package(self):
+                CMake(self).install()
+            ```
+          </textarea></section>
+
+          <!-- Slide 1.4 -->
+          <section data-markdown=""><textarea data-template>
+            Let's see it in action!
+            =======================
+
+            Steps taken before screen recording:
+
+            * Start Docker container with `ubuntu:latest` image
+            * Install packages: python3-pip, cmake, make, g++, gcc, git, tree, vim
+            * Install Conan via pip
+
+
+          </textarea></section>
         </section>
       </div>
     </div>
