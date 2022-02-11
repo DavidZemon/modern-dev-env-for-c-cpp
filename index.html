@@ -206,7 +206,9 @@
             console.log(`Old src=${source.src}`)
             fetch(source.src)
               .then((response) => {
-                if (!response.ok) {
+                // If the original URL fails or returns an object too small to be a video (aka, it's a link), then we
+                // need to fix the URL to handle GitHub Pages' inability to serve GitHub LFS content
+                if (!response.ok || Number(response.headers['content-length']) < 1024) {
                   const filename = source.src.split('/').reverse()[0];
                   source.src = `https://media.githubusercontent.com/media/DavidZemon/modern-dev-env-for-c-cpp/main/images/${filename}`;
                   console.log(`Resetting source to ${source.src}`)
