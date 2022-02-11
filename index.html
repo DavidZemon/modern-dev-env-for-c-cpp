@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="plugin/highlight/monokai.css">
 
     <style>
-        :root {
-            --r-heading-text-transform: none;
-            --r-main-font-size: 32px;
-        }
+      :root {
+        --r-heading-text-transform: none;
+        --r-main-font-size: 32px;
+      }
     </style>
   </head>
   <body>
@@ -174,8 +174,10 @@
 
             <video controls loop muted="true">
               <source src="images/ConanDemo.mp4" type="video/mp4">
-              <p>Your browser does not support HTML5 video. <a href="images/ConanDemo.mp4">You may download the file here
-                instead.</a>
+              <p>Your browser does not support HTML5 video.
+                <a href="https://media.githubusercontent.com/media/DavidZemon/modern-dev-env-for-c-cpp/main/images/ConanDemo.mp4">
+                  You may download the file here instead.</a>
+              </p>
             </video>
           </textarea></section>
         </section>
@@ -187,15 +189,31 @@
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
     <script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
-			});
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+      })
+        .then(() => {
+          // Make video sources work with GitHub LFS
+          const sources = document.querySelectorAll('video source');
+          console.log(`Found ${sources.length} video sources`);
+          sources.forEach((source) => {
+            console.log(`Old src=${source.src}`)
+            fetch(source.src)
+              .then((response) => {
+                if (!response.ok) {
+                  const filename = source.src.split('/').reverse()[0];
+                  source.src = `https://media.githubusercontent.com/media/DavidZemon/modern-dev-env-for-c-cpp/main/images/${filename}`;
+                }
+                source.parentElement.load();
+              })
+          });
+        });
     </script>
   </body>
 </html>
