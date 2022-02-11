@@ -212,10 +212,10 @@
                   const filename = source.src.split('/').reverse()[0];
                   source.src = `https://media.githubusercontent.com/media/DavidZemon/modern-dev-env-for-c-cpp/main/images/${filename}`;
                   console.log(`Resetting source to ${source.src}`)
+                  source.parentElement.load();
                 } else {
                   console.log('Source checks out. No changes.')
                 }
-                source.parentElement.load();
               })
           });
         });
