@@ -18,6 +18,10 @@
         --r-heading-text-transform: none;
         --r-main-font-size: 32px;
       }
+
+      video {
+        margin-top: 0.5em;
+      }
     </style>
   </head>
   <body>
@@ -93,16 +97,100 @@
           </textarea></section>
         </section>
 
-        <!-- Chapter 1: Conan -->
+        <!-- Chapter 1: CMake -->
         <section>
           <!-- Slide 1.0 -->
+          <section data-markdown><textarea data-template>
+            ![CMake logo](images/cmake-logo.svg)
+
+            CMake is an open-source, cross-platform family of tools designed to build, test and package software.
+
+            Want to [Learn CMake](https://davidzemon.github.io/LearnCMake/)?
+          </textarea></section>
+
+          <!-- Slide 1.1 -->
+          <section data-markdown><textarea data-template>
+            What is CMake?
+            ==============
+
+            * Wildly popular
+            * Makefile generator
+            * Unit test runner
+            * Software packaging orchestrator
+          </textarea></section>
+
+          <!-- Slide 1.2 -->
+          <section data-markdown=""><textarea data-template>
+            CMake Includes Support For...
+            =============================
+
+            * Transitive dependencies<br />libA -> libB, libB -> libC &therefore; libA -> libC
+            * Library/package discovery
+            * Componentized installation and packaging
+            * Custom/customized compiler/compiler settings
+            * Easy-to-read, color-coded messages
+
+            And can be extended for most anything else you can imagine<br />(turing complete)
+          </textarea></section>
+
+          <!-- Slide 1.3 -->
+          <section data-markdown><textarea data-template>
+            Just show an example!
+            =====================
+
+            ```cmake
+            project(CMakeDemo)
+
+            # Build and install a library
+            add_library(CMakeDemo-lib lib/CMakeDemo.cpp)
+            target_include_directories(CMakeDemo-lib PUBLIC
+              "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
+              $<INSTALL_INTERFACE:include>)
+            install(TARGETS CMakeDemo-lib DESTINATION lib)
+            install(DIRECTORY include DESTINATION include)
+
+            # Build and install an executable consuming the above library
+            add_executable(CMakeDemo bin/cli.cpp)
+            target_link_libraries(CMakeDemo CMakeDemo-lib)
+            install(TARGETS CMakeDemo DESTINATION bin)
+
+            # Make this library consumable by other CMake projects
+            install(EXPORT ${PROJECT_NAME}Config DESTINATION lib/cmake/${PROJECT_NAME}
+                NAMESPACE CMakeDemo::)
+            ```
+          </textarea></section>
+
+          <!-- Slide 1.4 -->
+          <section data-markdown><textarea data-template>
+            Let's see it in action!
+            =======================
+
+            Steps taken before screen recording:
+
+            * Start Docker container with 'ubuntu:latest' image
+            * Install packages: cmake, make, g++, gcc, git, tree, vim
+            * Compile and install GoogleTest with default settings
+
+            <video controls loop muted="true">
+              <source src="images/CMakeDemo.mp4" type="video/mp4">
+              <p>Your browser does not support HTML5 video.
+                <a href="https://media.githubusercontent.com/media/DavidZemon/modern-dev-env-for-c-cpp/main/images/CMakeDemo.mp4">
+                  You may download the file here instead.</a>
+              </p>
+            </video>
+          </textarea></section>
+        </section>
+
+        <!-- Chapter 2: Conan -->
+        <section>
+          <!-- Slide 2.0 -->
           <section data-markdown><textarea data-template>
             ![Conan logo](images/logo-conan-dark.svg)
 
             The open source, decentralized and multi-platform package manager to create and share all your native binaries.
           </textarea></section>
 
-          <!-- Slide 1.1 -->
+          <!-- Slide 2.1 -->
           <section data-markdown><textarea data-template>
             What was wrong with apt/yum/pacman?
             ===================================
@@ -116,7 +204,7 @@
             * Limited "developer" features, such as<br /> installing dev-only dependencies
           </textarea></section>
 
-          <!-- Slide 1.2 -->
+          <!-- Slide 2.2 -->
           <section data-markdown=""><textarea data-template>
             How does Conan work?
             ====================
@@ -134,7 +222,7 @@
               existing build system - Conan DOES NOT REPLACE YOUR BUILD SYSTEM
           </textarea></section>
 
-          <!-- Slide 1.3 -->
+          <!-- Slide 2.3 -->
           <section data-markdown=""><textarea data-template>
             Just show an example!
             =====================
@@ -161,7 +249,7 @@
             ```
           </textarea></section>
 
-          <!-- Slide 1.4 -->
+          <!-- Slide 2.4 -->
           <section data-markdown=""><textarea data-template>
             Let's see it in action!
             =======================
