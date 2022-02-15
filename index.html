@@ -347,6 +347,7 @@
 
             * Multi-toolchain support, including toolchains in<br />**Docker**, **WSL**, and **remote servers**
             * `clang-tidy` static code analysis
+            * `clang-format` formatter on "Save"
             * Same beautiful debugger with conditional<br />breakpoints, hex/binary for ints, etc
             * Valgrind output parsing; No more incomprehensible stacks
             * Analyze core dumps
@@ -392,6 +393,7 @@
             =======================
 
             * CMake invokes `clang-tidy` during compilation
+            * `clang-format` on git hook and CI execution
             * CMake executes tests via `valgrind`
             * Extra build target for generating code coverage reports
             * Extra build target for generating Doxygen documentation
