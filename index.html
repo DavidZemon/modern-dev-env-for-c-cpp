@@ -124,7 +124,7 @@
           </textarea></section>
 
           <!-- Slide 1.2 -->
-          <section data-markdown=""><textarea data-template>
+          <section data-markdown><textarea data-template>
             Why CMake?
             ==========
 
@@ -137,9 +137,9 @@
           </textarea></section>
 
           <!-- Slide 1.3 -->
-          <section data-markdown=""><textarea data-template>
-            CMake Includes Support For...
-            =============================
+          <section data-markdown><textarea data-template>
+            CMake's Standout Features
+            =========================
 
             * Transitive dependencies<br />libA -> libB, libB -> libC &therefore; libA -> libC
             * Library/package discovery
@@ -222,37 +222,42 @@
           </textarea></section>
 
           <!-- Slide 2.2 -->
-          <section data-markdown=""><textarea data-template>
+          <section data-markdown><textarea data-template>
             How does Conan work?
             ====================
 
-            * Recipes
-            * Profiles
-            * Central artifact repository
-            * Local artifact cache
-            * Build system integration (not replacement)
+            ![Cake recipe](images/CakeRecipe.jpg)
+            <!-- .element style="width: auto; height: 15em; position: absolute" -->
+
+            <div style="margin-left: 10em; padding-top: 2em">
+              Build packages with recipes and profiles
+
+              Share packages to the central artifact repository and cache them locally
+
+              ![Artifactory logo](images/AF_P_BLKGRN_rgb.svg)
+            </div>
           </textarea></section>
 
           <!-- Slide 2.3 -->
-          <section data-markdown=""><textarea data-template>
-            Conan Recipes, Profiles, Build System Integration
-            =================================================
+          <section data-markdown><textarea data-template>
+            Conan Recipes & Profiles
+            ========================
 
             * "Recipes" describe
               * Build dependencies and runtime dependencies
               * Instructions for building and packaging
               * Metadata such as library names, include directories, etc
+            * Metadata from dependencies' recipes provided to build system<br />
+              (lib paths, include dirs, etc)
             * "Profiles" describe an environment with
               * Classic build/host/target triplet
               * Environment variables
               * Build type (release/debug)
               compiler version, etc
-            * Metadata from dependencies' recipes provided to build system<br />
-              (lib paths, include dirs, etc)
           </textarea></section>
 
           <!-- Slide 2.4 -->
-          <section data-markdown=""><textarea data-template>
+          <section data-markdown><textarea data-template>
             Conan Artifact Storage
             ======================
 
@@ -260,14 +265,14 @@
               * JFrog hosts a big one, Conan Center, similar to `repo.maven.apache.org`
               * Artifactory Community Edition for C/C++ (free) includes Conan
               * Simplistic `conan_server` shipped with Conan's `pip` package
-            * Artifacts must include the recipe, optionally include binary and/or source
+            * Artifacts must include the recipe & source, optionally include binary
             * Artifacts are cached in a central directory on the user's machine (like Maven) for offline development
             * Artifacts are uniquely identified to support unique instances for every permutation of a project (host,
               target, compiler, compiler version, build configuration, SCM revision, etc)
           </textarea></section>
 
           <!-- Slide 2.5 -->
-          <section data-markdown=""><textarea data-template>
+          <section data-markdown><textarea data-template>
             Just show an example!
             =====================
 
@@ -294,7 +299,7 @@
           </textarea></section>
 
           <!-- Slide 2.6 -->
-          <section data-markdown=""><textarea data-template>
+          <section data-markdown><textarea data-template>
             Let's see it in action!
             =======================
 
@@ -324,13 +329,12 @@
           </textarea></section>
 
           <!-- Slide 3.1 -->
-          <section data-markdown=""><textarea data-template>
+          <section data-markdown><textarea data-template>
             Built for Modern CMake
             ======================
 
             Like IntelliJ IDEA w/ Maven, CLion parses CMake files directly
 
-            * Auto-reload on CMake file change
             * Recognize different include directories per targets
             * Recognize different preprocessor definitions per build type
             * Auto-create run configurations per target, including specialized GoogleTest, Catch2, Boost.Test, and Doctest
@@ -338,7 +342,7 @@
           </textarea></section>
 
           <!-- Slide 3.2 -->
-          <section data-markdown=""><textarea data-template>
+          <section data-markdown><textarea data-template>
             Additional Integrations
             =======================
 
@@ -355,7 +359,7 @@
           </textarea></section>
 
           <!-- Slide 3.3 -->
-          <section data-markdown=""><textarea data-template>
+          <section data-markdown><textarea data-template>
             Oohhh, SHINY!
             =============
 
@@ -402,6 +406,24 @@
             [![SonarQube logo](images/SonarQube%20logo%20white.svg)](https://www.sonarqube.org/)
             <!-- .element style="height: 6em; width: auto;" -->
           </textarea></section>
+
+          <!-- Slide 4.1 -->
+          <section data-markdown><textarea data-template>
+            Jumpstart
+            =========
+
+            > Generate a C/C++ project using a modern development environment
+
+            * Docker image for easy installation and use
+            * Includes integration of all tools described in this presentation
+            * Configuration options support selectable license file, choosing C/C++, whether or not to include tests, etc
+
+            Getting started:
+
+            https://github.com/DavidZemon/jumpstart
+
+            `docker run --rm davidzemon/jumpstart`
+         </textarea></section>
         </section>
 
         <!-- Chapter 5: Conclusion -->
@@ -438,7 +460,13 @@
         hash: true,
 
         // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+
+        // Make it easier to play/pause videos by replacing "space" with "enter"
+        keyboard: {
+          13: 'next',
+          32: null
+        }
       })
         .then(() => {
           // Make video sources work with GitHub LFS
