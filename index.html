@@ -389,25 +389,9 @@
           </section>
         </section>
 
-        <!-- Chapter 4: Additional Integrations -->
+        <!-- Chapter 4: Jumpstart -->
         <section>
           <!-- Slide 4.0 -->
-          <section data-markdown><textarea data-template>
-            Additional Integrations
-            =======================
-
-            * CMake invokes `clang-tidy` during compilation
-            * `clang-format` on git hook and CI execution
-            * CMake executes tests via `valgrind`
-            * Extra build target for generating code coverage reports
-            * Extra build target for generating Doxygen documentation
-            * Dynamically generated properties file for SonarQube integration
-
-            [![SonarQube logo](images/SonarQube%20logo%20white.svg)](https://www.sonarqube.org/)
-            <!-- .element style="height: 6em; width: auto;" -->
-          </textarea></section>
-
-          <!-- Slide 4.1 -->
           <section data-markdown><textarea data-template>
             Jumpstart
             =========
@@ -424,6 +408,63 @@
 
             `docker run --rm davidzemon/jumpstart`
          </textarea></section>
+
+          <!-- Slide 4.1 -->
+          <section data-markdown><textarea data-template>
+            Additional Integrations
+            =======================
+
+            * CMake invokes `clang-tidy` during compilation
+            * `clang-format` on git hook and CI execution
+            * CMake executes tests via `valgrind`
+            * Extra build target for generating code coverage reports
+            * Extra build target for generating Doxygen documentation
+            * Dynamically generated properties file for SonarQube integration
+
+            [![SonarQube logo](images/SonarQube%20logo%20white.svg)](https://www.sonarqube.org/)
+            <!-- .element style="height: 6em; width: auto;" -->
+          </textarea></section>
+
+          <!-- Slide 4.2 -->
+          <section>
+            <h2>Complete Tool List </h2>
+
+            <div class="display: grid">
+              <dl class="display: inline-grid">
+                <dt>Dependency management</dt>
+                <dd>Conan</dd>
+
+                <dt>Build system</dt>
+                <dd>CMake</dd>
+
+                <dt>Testing framework</dt>
+                <dd>Google Test</dd>
+
+                <dt>Mocking library</dt>
+                <dd>Google Mock</dd>
+
+                <dt>Code coverage</dt>
+                <dd>gcov</dd>
+              </dl>
+
+              <dl class="display: inline-grid">
+                <dt>Static code analysis</dt>
+                <dd>clang-tidy</dd>
+
+                <dt>Code formatter</dt>
+                <dd>clang-format</dd>
+
+                <dt>Dynamic code analysis</dt>
+                <dd>valgrind</dd>
+
+                <dt>Editor</dt>
+                <dd>JetBrains CLion</dd>
+
+                <dt>Debugger</dt>
+                <dd>gdb</dd>
+              </dl>
+            </div>
+          </section>
         </section>
 
         <!-- Chapter 5: Conclusion -->

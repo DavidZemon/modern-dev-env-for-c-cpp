@@ -39,7 +39,6 @@ Additional Integrations
 * Docker-based toolchain
 * Remote GDB
 
-
 * clang-tidy
 * cppcheck
 * valgrind target
